@@ -34,16 +34,7 @@ function showContent() {
 }
 
 function base_url($url = null) {
-	if ($_SERVER['HTTP_HOST'] == 'localhost:8080') {
-        $base_url = "http://localhost:8080/";
-    } elseif ($_SERVER['HTTP_HOST'] == 'derli.do:8080') {
-        $base_url = "http://derli.do:8080/";
-    } elseif ($_SERVER['HTTP_HOST'] == 'dev.dyzulk.com') {
-        $base_url = "https://dev.dyzulk.com/";
-    } else {
-        $base_url = "http://localhost/";
-    }
-	// return $base_url . $url;
+	$base_url = "http://localhost/raisenapp/";
 	if( $url != null ) {
 		return $base_url . $url;
 	} else {
