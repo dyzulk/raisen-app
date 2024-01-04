@@ -13,7 +13,7 @@ function includePage($pageName) {
     if ($_SESSION["role_id"] == 1) {
         require_once "../page/{$pageName}.php";
     } else {
-        require_once "page/{$pageName}.php";
+        require_once "../page/{$pageName}.php";
     }
 }
 
@@ -41,7 +41,7 @@ function base_url($url = null) {
     } elseif ($_SERVER['HTTP_HOST'] == 'dev.dyzulk.com') {
         $base_url = "https://dev.dyzulk.com/";
     } else {
-        $base_url = "http://192.168.0.243:8080/";
+        $base_url = "http://localhost/";
     }
 	// return $base_url . $url;
 	if( $url != null ) {
