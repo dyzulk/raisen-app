@@ -1,7 +1,7 @@
 <?php
 
 // koneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "phpdasar", "3308");
+$conn = mysqli_connect("localhost", "root", "", "raisenapp");
 
 function ranID(){
 	$prefix = "pel-";
@@ -26,39 +26,6 @@ function getuser($id) {
 	$result = mysqli_query($conn, $query);
 	$user = mysqli_fetch_assoc($result);
 	return $user;
-}
-
-function getdata2($table, $id) {
-    global $conn;
-
-    // Menggunakan prepared statement untuk mencegah SQL injection
-    $stmt = mysqli_prepare($conn, "SELECT * FROM $table WHERE id = ?");
-    mysqli_stmt_bind_param($stmt, "i", $id);
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
-    $data = mysqli_fetch_assoc($result);
-
-    // mysqli_close($conn);
-
-    return $data;
-}
-
-function getuser2($id) {
-    global $conn;
-	$table = "user";
-
-    // Menggunakan prepared statement untuk mencegah SQL injection
-    $stmt = mysqli_prepare($conn, "SELECT $id FROM user WHERE id = ?");
-    mysqli_stmt_bind_param($stmt, "i", $id);
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
-    $data = mysqli_fetch_assoc($result);
-
-    // mysqli_close($conn);
-
-    return $data;
 }
 
 function role_id($id) {
@@ -268,7 +235,7 @@ function registrasi($data) {
 function tambahPelanggan($data) {
 	global $conn;
 
-	$id				= ranID();
+	$id			= ranID();
 	$email			= htmlspecialchars($data["email"]);
 	$password		= password_hash("123456", PASSWORD_DEFAULT);
 	$nama			= htmlspecialchars($data["nama"]);
@@ -276,7 +243,7 @@ function tambahPelanggan($data) {
 	$image			= "default.png";
 	$role_id		= 2;
 	$is_active		= 1;
-	$date_created	= time();
+	$date_created		= time();
 
 	$query = "INSERT INTO user
 				VALUES
